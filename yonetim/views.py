@@ -61,3 +61,6 @@ def get_deneme(request):
         adi = request.GET['adi']
         soyadi = request.GET['soyadi']
         return HttpResponse(u'<b>Adı:</b> %s <br><b>Soyadı:</b>%s' %(adi, soyadi))
+
+    else:
+        pass

@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^ogretim-elemanlari-listesi/', yonetim.views.ogretim_elemanlari_listesi),
     url(r'^get-deneme/', yonetim.views.get_deneme),
     url(r'^ogretim-elemani-ekleme/', yonetim.views.ogretim_elemani_ekleme),
+
 )
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns

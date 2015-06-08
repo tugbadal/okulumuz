@@ -3,8 +3,8 @@ from django import forms
 
 
 class OgretimElemaniFormu(forms.Form):
-    adi = forms.CharField(label="Adı", required=True)
-    soyadi = forms.CharField(label="Soyadı", required=True)
+    adi = forms.CharField(label="Adı")
+    soyadi = forms.CharField(label="Soyadı")
     telefonu = forms.CharField(label="Telefon Numarası", required=False)
     e_posta_adresi = forms.EmailField(label="E Posta Adresi", required=False)
 
@@ -16,7 +16,11 @@ class OgretimElemaniFormu(forms.Form):
                 raise forms.ValidationError('Bu adres geçersiz')
         return adres
 
-
+    def clean_soyadi(self):
+        soyad = self.cleaned_data['soyadi']
+        if not soyad:
+            raise forms.ValidationError('soyadı alanı gerekli')
+        return soyad
 
 
 

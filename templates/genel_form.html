@@ -21,7 +21,13 @@
             {% endfor %}
         </table>
         <input type="submit" value="Gönder">
+    {% if ID %}
+        <p><a href="?id={{ ID }}&sil=1">Bu kaydı sil</a></p>
+    {% endif %}
     </form>
 
+    {% if ID %}
+        <p><a href="?id={{ ID }}&sil=1">Bu kaydı sil</a></p>
+    {% endif %}
 </body>
 </html>

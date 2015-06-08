@@ -8,18 +8,31 @@
     <h1>Öğretim Elemanları Listesi</h1>
     <table border="1">
         <tr>
-            <th>Sıra</th><th>Adı</th><th>Soyadı</th><th>Telefonu</th><th>E-Posta</th>
+            <th>Sıra</th>
+            {% if olcut == '1' %}<th class="siralanan">{% else %}<th>{% endif %} <a href="?sirala=1">Adı</a></th>
+            {% if olcut == '2' %}<th class="siralanan">{% else %}<th>{% endif %} <a href="?sirala=2">Soyadi</a></th>
+            <th>Telefonu</th>
+            {% if olcut == '3' %}<th class="siralanan">{% else %}<th>{% endif %} <a href="?sirala=3">E-Posta Adresi</a></th>
         </tr>
         {% for ogr in ogretim_elemanlari %}
         <tr>
-            <td>{{ ogr.id }}</td>
-            <td>{{ ogr.adi }}</td>
-            <td>{{ ogr.soyadi }}</td>
+            <td><a href="/ogretim-elemani-ekleme/?id={{ ogr.id }}">{{ forloop.counter }}</a></td>
+            <td><a href="/ogretim-elemani-ekleme/?id={{ ogr.id }}"></a>{{ ogr.adi }}</td>
+            <td><a href="/ogretim-elemani-ekleme/?id={{ ogr.id }}"></a>{{ ogr.soyadi }}</td>
             <td>{{ ogr.telefonu }}</td>
             <td>{{ ogr.e_posta_adresi }}</td>
         </tr>
         {% endfor %}
     </table>
+    {% if ogretim_elemanlari.has_previous %}
+        <a href="?sayfa={{ ogretim_elemanlari.previous_page_number }}">Onceki</a>
+    {% endif %}
+    Sayfa {{ ogretim_elemanlari.number }} / {{ ogretim_elemanlari.paginator.num_pages }}
+    {% if ogretim_elemanlari.has_next %}
+        <a href="?sayfa={{ ogretim_elemanlari.next_page_number }}">Sonraki</a>
+    {% endif %}
+    <br>
+    <a href="?sayfa=/ogretim-elemani-ekleme/">Yeni Kayıt</a></p>
 
 </body>
 </html>
